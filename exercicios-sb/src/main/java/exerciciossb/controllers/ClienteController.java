@@ -1,31 +1,26 @@
 package exerciciossb.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import exerciciossb.model.entities.Cliente;
+import exerciciossb.model.repositories.ClienteRepository;
 
 
 @RestController
 @RequestMapping(path = "/clientes")
 public class ClienteController {
 	
-	@GetMapping(path = "/qualquer")
-	public Cliente obterCliente() {
-		return new Cliente(28,"João");
-	}
+	@Autowired
+	ClienteRepository cr;
 	
-	@GetMapping("/{id}")
-	public Cliente obterClienteId1(@PathVariable int id) {
-		return new Cliente(id, "Maria");
-	}
-	
-	@GetMapping 
-	public Cliente obterClienteId2(@RequestParam(name = "id") int id) {
-		return new Cliente(id, "Zé");
+	@PostMapping
+	public Cliente cadastrarCliente(Cliente cliente) { // spring reconhece sozinho os atributos necessários
+		cr.save(cliente);
+		return cliente;
+		
 	}
 
 }
