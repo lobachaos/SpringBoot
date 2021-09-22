@@ -1,4 +1,4 @@
-package exerciciossb.models;
+package exerciciossb.model.entities;
 
 public class Cliente {
 	private int id;
