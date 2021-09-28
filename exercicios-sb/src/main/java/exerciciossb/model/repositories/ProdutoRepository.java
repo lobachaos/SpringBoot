@@ -6,4 +6,6 @@ import exerciciossb.model.entities.Produto;
 
 public interface ProdutoRepository extends PagingAndSortingRepository<Produto, Integer> {
 
+	public Iterable<Produto> findByNomeContaining(String nome);
+	
 }

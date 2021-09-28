@@ -44,7 +44,12 @@ public class ProdutoController {
 		return pr.findAll(page);
 	}
 	
-	
+	@GetMapping(path = "/nome/{nome}")
+	public Iterable<Produto> obterProdutoPorNome(@PathVariable String nome) {
+		
+		
+		return pr.findByNomeContaining(nome);
+	}
 	
 	
 	@GetMapping(path = "/{id}")
